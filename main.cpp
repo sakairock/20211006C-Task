@@ -3,9 +3,9 @@
 class ArraySetClass
 {
 public:
-	ArraySetClass()
+	void Create( int num )
 	{
-		newArray = new int[1000];
+		newArray = new int[num];
 	}
 	~ArraySetClass()
 	{
@@ -13,16 +13,32 @@ public:
 		newArray = nullptr;
 		printf("%p\n", newArray);
 	}
+	void Set( int i )
+	{
+		newArray[i] = i;
+	}
+	int Get( int i )
+	{
+		return newArray[i];
+	}
 
-public:
-	int* newArray;
-};
+private:
+	int * newArray;
+}; 
 int main()
 {
 	ArraySetClass arrayset;
+
+	arrayset.Create(1000);
+
 	for (int i = 0; i < 1000; i++)
 	{
-		arrayset.newArray[i] = i * 1;
-		printf("%d\n", arrayset.newArray[i]);
+		arrayset.Set(i);
 	}
+	for (int i = 0; i < 1000; i++)
+	{
+		printf("%d\n", arrayset.Get(i));
+	}
+
+	return 0;
 }
