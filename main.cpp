@@ -3,9 +3,9 @@
 class ArraySetClass
 {
 public:
-	void Create( int num )
+	ArraySetClass()
 	{
-		newArray = new int[num];
+		newArray = nullptr;
 	}
 	~ArraySetClass()
 	{
@@ -13,18 +13,41 @@ public:
 		newArray = nullptr;
 		printf("%p\n", newArray);
 	}
-	void Set( int i )
+	void Create(int num)
 	{
-		newArray[i] = i;
+		newArray = new int[num];
+		rangenum = num;
 	}
-	int Get( int i )
+	void Set( int setnum )
 	{
-		return newArray[i];
+		newArray[setnum] = setnum;
+	}
+	int Get( int getnum )
+	{
+		return newArray[getnum];
 	}
 
 private:
 	int * newArray;
+	int rangenum;
 }; 
+
+int ArraySetClass::Get(int getnum)
+{
+	if (getnum >= 0 && getnum < rangenum)
+		return newArray[getnum];
+	else
+		return NULL;
+}
+
+void ArraySetClass::Set(int setnum)
+{
+	if (setnum >= 0 && setnum < rangenum)
+		newArray[setnum] = setnum;
+	else
+		return;
+}
+
 int main()
 {
 	ArraySetClass arrayset;
@@ -42,3 +65,4 @@ int main()
 
 	return 0;
 }
+
