@@ -18,35 +18,27 @@ public:
 		newArray = new int[num];
 		rangenum = num;
 	}
-	void Set( int setnum )
+	int Get(int getnum)
 	{
-		newArray[setnum] = setnum;
-	}
-	int Get( int getnum )
-	{
-		return newArray[getnum];
+		if (getnum >= 0 && getnum < rangenum)
+			return newArray[getnum];
+		else
+			return NULL;
 	}
 
+	void Set(int setnum)
+	{
+		if (setnum >= 0 && setnum < rangenum)
+			newArray[setnum] = setnum;
+		else
+			return;
+	}
 private:
 	int * newArray;
 	int rangenum;
 }; 
 
-int ArraySetClass::Get(int getnum)
-{
-	if (getnum >= 0 && getnum < rangenum)
-		return newArray[getnum];
-	else
-		return NULL;
-}
 
-void ArraySetClass::Set(int setnum)
-{
-	if (setnum >= 0 && setnum < rangenum)
-		newArray[setnum] = setnum;
-	else
-		return;
-}
 
 int main()
 {
